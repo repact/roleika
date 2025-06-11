@@ -3,57 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Bio Page</title>
-    <!-- Embedded CSS to avoid file loading issues -->
+    <title>YourName | Links</title>
     <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #6d28d9;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #2d3748;
-            color: white;
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(109, 40, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(109, 40, 217, 0.15) 0%, transparent 50%);
         }
+        
         .container {
-            width: 90%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 420px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        .profile-card {
             text-align: center;
+            margin-bottom: 2.5rem;
         }
+        
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 1.25rem;
+        }
+        
         h1 {
-            color: #81e6d9;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
         }
-        .about-section {
-            margin: 25px 0;
+        
+        .bio {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
         }
-        .social-link {
-            color: #fbb6ce;
-            font-family: monospace;
-            font-size: 1.2rem;
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .link-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .link-item:hover {
+            background: rgba(109, 40, 217, 0.15);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .link-icon {
+            margin-right: 12px;
+            font-size: 1.25rem;
+        }
+        
+        .link-text {
+            flex-grow: 1;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .link-arrow {
+            opacity: 0.6;
+        }
+        
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>YOUR NAME</h1>
-        
-        <div class="about-section">
-            <h2>About me</h2>
-            <p>Your bio text goes here. Write something interesting about yourself.</p>
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/96" alt="Profile" class="avatar">
+            <h1>Your Name</h1>
+            <p class="bio">Digital creator · Photography enthusiast · Sharing my journey</p>
         </div>
         
-        <div class="social-link">
-            // @yourusername
+        <div class="links">
+            <a href="#" class="link-item">
+                <span class="link-icon">📸</span>
+                <span class="link-text">Instagram</span>
+                <span class="link-arrow">→</span>
+            </a>
+            <a href="#" class="link-item">
+                <span class="link-icon">🐦</span>
+                <span class="link-text">Twitter</span>
+                <span class="link-arrow">→</span>
+            </a>
+            <a href="#" class="link-item">
+                <span class="link-icon">📹</span>
+                <span class="link-text">YouTube</span>
+                <span class="link-arrow">→</span>
+            </a>
+            <a href="#" class="link-item">
+                <span class="link-icon">💼</span>
+                <span class="link-text">Portfolio</span>
+                <span class="link-arrow">→</span>
+            </a>
+            <a href="#" class="link-item">
+                <span class="link-icon">✉️</span>
+                <span class="link-text">Contact</span>
+                <span class="link-arrow">→</span>
+            </a>
         </div>
+        
+        <footer>
+            © 2023 Your Name · All rights reserved
+        </footer>
     </div>
 </body>
 </html>
