@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourName | Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -65,6 +66,28 @@
             margin-bottom: 1.5rem;
         }
         
+        .discord-status {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(88, 101, 242, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .online { background: #3ba55c; }
+        .idle { background: #faa61a; }
+        .dnd { background: #ed4245; }
+        .offline { background: #747f8d; }
+        
         .links {
             display: flex;
             flex-direction: column;
@@ -82,6 +105,7 @@
             align-items: center;
             transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
         }
         
         .link-item:hover {
@@ -93,6 +117,8 @@
         .link-icon {
             margin-right: 12px;
             font-size: 1.25rem;
+            width: 24px;
+            text-align: center;
         }
         
         .link-text {
@@ -103,6 +129,70 @@
         
         .link-arrow {
             opacity: 0.6;
+        }
+        
+        .crypto-wallet {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .crypto-wallet.show {
+            display: block;
+        }
+        
+        .crypto-option {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        
+        .crypto-option:last-child {
+            margin-bottom: 0;
+        }
+        
+        .crypto-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .crypto-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            border-radius: 50%;
+        }
+        
+        .crypto-address {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            word-break: break-all;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
         }
         
         footer {
@@ -116,42 +206,121 @@
 <body>
     <div class="container">
         <div class="profile-card">
-            <img src="profile.jpg" alt="Profile" class="avatar">
+            <img src="https://via.placeholder.com/96" alt="Profile" class="avatar">
             <h1>Your Name</h1>
-            <p class="bio">· Developer</p>
+            <p class="bio">Digital creator · Crypto enthusiast · Web3 developer</p>
+            
+            <!-- Discord Status -->
+            <div class="discord-status">
+                <div class="status-dot online"></div>
+                <span>Online on Discord</span>
+            </div>
         </div>
         
         <div class="links">
-            <a href="#" class="link-item">
-                <span class="link-icon">📸</span>
-                <span class="link-text">Instagram</span>
-                <span class="link-arrow">→</span>
-            </a>
-            <a href="#" class="link-item">
-                <span class="link-icon">🐦</span>
+            <!-- Discord Copy Link -->
+            <div class="link-item" id="discordCopy">
+                <span class="link-icon"><i class="fab fa-discord"></i></span>
+                <span class="link-text">Copy Discord Username</span>
+                <span class="link-arrow">⎘</span>
+            </div>
+            
+            <!-- Crypto Wallet Button -->
+            <div class="link-item" id="cryptoButton">
+                <span class="link-icon"><i class="fas fa-wallet"></i></span>
+                <span class="link-text">Crypto Wallets</span>
+                <span class="link-arrow">⌄</span>
+            </div>
+            
+            <!-- Crypto Wallet Dropdown -->
+            <div class="crypto-wallet" id="cryptoWallet">
+                <div class="crypto-option">
+                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="crypto-icon">
+                    <div>
+                        <div>Ethereum</div>
+                        <div class="crypto-address">0x71C7...3B21</div>
+                    </div>
+                </div>
+                <div class="crypto-option">
+                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" class="crypto-icon">
+                    <div>
+                        <div>Solana</div>
+                        <div class="crypto-address">7Q4b...9H2f</div>
+                    </div>
+                </div>
+                <div class="crypto-option">
+                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" class="crypto-icon">
+                    <div>
+                        <div>Bitcoin</div>
+                        <div class="crypto-address">bc1q...k4h8</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Social Links -->
+            <a href="https://twitter.com/yourusername" class="link-item" target="_blank">
+                <span class="link-icon"><i class="fab fa-twitter"></i></span>
                 <span class="link-text">Twitter</span>
                 <span class="link-arrow">→</span>
             </a>
-            <a href="#" class="link-item">
-                <span class="link-icon">📹</span>
-                <span class="link-text">YouTube</span>
+            
+            <a href="https://github.com/yourusername" class="link-item" target="_blank">
+                <span class="link-icon"><i class="fab fa-github"></i></span>
+                <span class="link-text">GitHub</span>
                 <span class="link-arrow">→</span>
             </a>
-            <a href="#" class="link-item">
-                <span class="link-icon">💼</span>
-                <span class="link-text">Portfolio</span>
-                <span class="link-arrow">→</span>
-            </a>
-            <a href="#" class="link-item">
-                <span class="link-icon">✉️</span>
-                <span class="link-text">Contact</span>
-                <span class="link-arrow">→</span>
-            </a>
+        </div>
+        
+        <div class="copy-notification" id="copyNotification">
+            Copied to clipboard!
         </div>
         
         <footer>
             © 2023 Your Name · All rights reserved
         </footer>
     </div>
+
+    <script>
+        // Crypto Wallet Toggle
+        const cryptoButton = document.getElementById('cryptoButton');
+        const cryptoWallet = document.getElementById('cryptoWallet');
+        
+        cryptoButton.addEventListener('click', () => {
+            cryptoWallet.classList.toggle('show');
+            const arrow = cryptoButton.querySelector('.link-arrow');
+            arrow.textContent = cryptoWallet.classList.contains('show') ? '⌃' : '⌄';
+        });
+        
+        // Discord Copy Functionality
+        const discordCopy = document.getElementById('discordCopy');
+        const copyNotification = document.getElementById('copyNotification');
+        
+        discordCopy.addEventListener('click', () => {
+            // Replace with your actual Discord username
+            const discordUsername = 'YourUsername#1234';
+            
+            navigator.clipboard.writeText(discordUsername).then(() => {
+                copyNotification.classList.add('show');
+                setTimeout(() => {
+                    copyNotification.classList.remove('show');
+                }, 2000);
+            });
+        });
+        
+        // Crypto Address Copy Functionality
+        const cryptoOptions = document.querySelectorAll('.crypto-option');
+        
+        cryptoOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const address = option.querySelector('.crypto-address').textContent;
+                navigator.clipboard.writeText(address).then(() => {
+                    copyNotification.classList.add('show');
+                    setTimeout(() => {
+                        copyNotification.classList.remove('show');
+                    }, 2000);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
