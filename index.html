@@ -4,21 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Bio Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Embedded CSS to avoid file loading issues -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #2d3748;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #81e6d9;
+            margin-bottom: 20px;
+        }
+        .about-section {
+            margin: 25px 0;
+        }
+        .social-link {
+            color: #fbb6ce;
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="profile-card">
-            <h1>YOUR NAME</h1>
-            
-            <div class="about-section">
-                <h2>About me</h2>
-                <p>Your bio text goes here. Write something interesting about yourself.</p>
-            </div>
-            
-            <div class="social-link">
-                // @yourusername
-            </div>
+        <h1>YOUR NAME</h1>
+        
+        <div class="about-section">
+            <h2>About me</h2>
+            <p>Your bio text goes here. Write something interesting about yourself.</p>
+        </div>
+        
+        <div class="social-link">
+            // @yourusername
         </div>
     </div>
 </body>
